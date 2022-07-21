@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Concert One';
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #f6c85f;
+  padding: 40px 80px;
+}
+
+h1{
+  color: #6f4e7c;
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 30px;  
+}
+
+p{
+  color: #444444;
+  font-size: 22px;
+  text-align: center;
+  line-height: 120%;
+}
+
+.board{
+  display: flex;
+  gap: 200px;
+  margin-top: 30px;
+}
+
+.deck-board{
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+
+}
+
+.deck-board > div{
+  display: flex;
+  width: 150px;
+  height: 231px;
+  background-color: #0b84a5;
+  border-radius: 20px;
+  
+}
+
+.deck-board > div img{
+  width: 100%;
+  border-radius: 20px;
+  border: 6px solid #0b84a5;
+}
+
+
+.flip-board{
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.flip-board > div{
+  display: flex;
+  width: 220px;
+  height: 338px;
+  background-color: #0b84a5;
+  border-radius: 20px;
+}
+
+.flip-board > div img{
+  width: 100%;
+  border-radius: 20px;
+  border: 6px solid #0b84a5;
+}
+
+
