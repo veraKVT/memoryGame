@@ -5,41 +5,17 @@ const smeshariki = [{
     name: 'barash',
     imgUrl: 'images/barash2.png'
 },{
-    name: 'barash',
-    imgUrl: 'images/barash3.png'
-},{
-    name: 'barash',
-    imgUrl: 'images/barash4.png'
-},{
-    name: 'bibi',
-    imgUrl: 'images/bibi1.png'
-},{
-    name: 'bibi',
-    imgUrl: 'images/bibi2.png' 
-},{
     name: 'jezik',
     imgUrl: 'images/jezik1.png'
 },{
     name: 'jezik',
     imgUrl: 'images/jezik2.png'
 }, {
-    name: 'jezik',
-    imgUrl: 'images/jezik3.png'
-}, {
-    name: 'jezik',
-    imgUrl: 'images/jezik4.png'
-},{
     name: 'kar',
     imgUrl: 'images/kar1.png'
 },{
     name: 'kar',
     imgUrl: 'images/kar2.png'
-},{
-    name: 'kar',
-    imgUrl: 'images/kar3.png'
-},{
-    name: 'kar',
-    imgUrl: 'images/kar4.png'
 },{
     name: 'kopatic',
     imgUrl: 'images/kopatic1.png'
@@ -47,23 +23,11 @@ const smeshariki = [{
     name: 'kopatic',
     imgUrl: 'images/kopatic2.png'
 },{
-    name: 'kopatic',
-    imgUrl: 'images/kopatic3.png'
-},{
-    name: 'kopatic',
-    imgUrl: 'images/kopatic4.png'
-},{
     name: 'krosh',
     imgUrl: 'images/krosh1.png'
 },{
     name: 'krosh',
     imgUrl: 'images/krosh2.png'
-},{
-    name: 'krosh',
-    imgUrl: 'images/krosh3.png'
-},{
-    name: 'krosh',
-    imgUrl: 'images/krosh4.png'
 },{
     name: 'los',
     imgUrl: 'images/los1.png'
@@ -71,23 +35,11 @@ const smeshariki = [{
     name: 'los',
     imgUrl: 'images/los2.png'
 },{
-    name: 'los',
-    imgUrl: 'images/los3.png'
-},{
-    name: 'los',
-    imgUrl: 'images/los4.png'
-},{
     name: 'nusha',
     imgUrl: 'images/nusha1.png'
 },{
     name: 'nusha',
     imgUrl: 'images/nusha2.png'
-},{
-    name: 'nusha',
-    imgUrl: 'images/nusha3.png'
-},{
-    name: 'nusha',
-    imgUrl: 'images/nusha4.png'
 },{
     name: 'pin',
     imgUrl: 'images/pin1.png'
@@ -95,65 +47,76 @@ const smeshariki = [{
     name: 'pin',
     imgUrl: 'images/pin2.png'
 },{
-    name: 'pin',
-    imgUrl: 'images/pin3.png'
-},{
-    name: 'pin',
-    imgUrl: 'images/pin4.png'
-},{
     name: 'sova',
     imgUrl: 'images/sova1.png'
 },{
     name: 'sova',
     imgUrl: 'images/sova2.png'
-},{
-    name: 'sova',
-    imgUrl: 'images/sova3.png'
-},{
-    name: 'sova',
-    imgUrl: 'images/sova4.png'
 }]
+
+const shirt = {
+    name: 'allHeroes',
+    imgUrl: 'images/all.png'
+} 
+
+// start game
+
+function startGame(){
+    let button = document.getElementById('start');
+    let hide = getComputedStyle(button).getPropertyValue('display');    
+    button.style.display = 'none';
+    let deckForGame = createNewDeck(smeshariki);
+    toShuffleDeck(deckForGame);
+    cardOnDesk(deckForGame);
+}
 
 
 //  creating deck
 
-function createNewDeck(obj){    
-    let deck = obj.map((el) => el);    
-    return deck;
+function createNewDeck(sourceDeck){    
+    let newDeck = sourceDeck.map((el) => el);    
+    return newDeck;
 }
 
 // to shuffle deck
 
-function toShuffleDeck(obj){
-    for (let i = 0; i < obj.length - 1; i++){
-       let x = Math.floor(Math.random() * (obj.length - 1 - i));       
-       let temp = obj[x];
-       obj[x] = obj[obj.length - 1 - i];
-       obj[obj.length - 1 - i] = temp;
+function toShuffleDeck(deck){
+    for (let i = 0; i < deck.length - 1; i++){
+       let x = Math.floor(Math.random() * (deck.length - 1 - i));       
+       let temp = deck[x];
+       deck[x] = deck[deck.length - 1 - i];
+       deck[deck.length - 1 - i] = temp;
     }
 }
 
-function cardOnDesk(obj){    
-    let questCard = document.getElementById('start-card');
-    let pairCard = document.getElementById('flip');
-    let pic = obj.shift();
-    let box = document.createElement('div');
-    if (questCard.hasChildNodes() === false){               
-        box.innerHTML = '<img src=\"'+ pic.imgUrl+'\" alt=\"\">';
-        questCard.appendChild(box);
-    } else if (pairCard.hasChildNodes() === false){
-        box.innerHTML = '<img src=\"'+ pic.imgUrl+'\" alt=\"\">';
-        pairCard.appendChild(box);
-    } else if (pairCard.hasChildNodes() === true && pairCard.childElementCount < 3){
-        box.innerHTML = '<img src=\"'+ pic.imgUrl+'\" alt=\"\">';
-        pairCard.appendChild(box);
-    }
+// deal cards
+
+function cardOnDesk(deck){
+    deck.forEach(card => {
+        let cardPlace = document.getElementById('playground');
+
+        let box = document.createElement('div');
+        let flipImg = document.createElement('img');
+        flipImg.src = shirt.imgUrl;
+        flipImg.classList.add('visible');
+        box.appendChild(flipImg);
+        
+
+        let openImg = document.createElement('img');
+        openImg.src = card.imgUrl;
+        openImg.classList.add('hidden');
+        box.appendChild(openImg);
+        box.addEventListener('click', flipCard);
+
+        cardPlace.appendChild(box);
+    });
 }
 
-function playBeginning(obj){
-    createNewDeck(obj);
-    toShuffleDeck(obj);
-    const mainDeck = document.getElementById('deck');
-    mainDeck.addEventListener('click', cardOnDesk(obj));
-}
+// function  flipCard(this){
+//     this.firstElementChild.classList.toggle('visible');
+//     this.firstElementChild.classList.toggle('hidden');
+//     this.lastElementChild.classList.toggle('hidden');
+//     this.lastElementChild.classList.toggle('visible');
+//     this.removeEventListener('click', flipCard);
+// }   
 

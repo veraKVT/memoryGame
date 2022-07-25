@@ -4,23 +4,15 @@
   <head>
     <meta charset="utf-8">
     <title>Playing cards</title>
-    <link href="styles/styles-play.css" rel="stylesheet">
+    <link href="styles/styles-memoryCards.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=DM+Sans&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <h1 id="start">Start playing!</h1>    
-    <div class="board">
-      <div class="deck-board">
-        <div id="deck" onclick="cardOnDesk(smeshariki)"><img src="images/all.png" alt=""></div>
-        <div id="start-card"></div>
-      </div>
-      <div id="flip" class="flip-board"></div>
-    </div>
-    
-    
-    <script src="scripts/scripts-play.js"></script>
+    <h1 id="start" onclick="startGame();">Start playing!</h1>    
+    <div id="playground" class="board"></div>    
+    <script src="scripts/scripts-memoryGame.js"></script>
   </body>
 </html>
