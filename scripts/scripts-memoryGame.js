@@ -88,6 +88,7 @@ function startGame(){
 // restart game
 
 function restartGame(){
+    resetData();
     let deckForGame = createNewDeck(smeshariki);
     toShuffleDeck(deckForGame);
     cardOnDesk(deckForGame);
@@ -218,13 +219,6 @@ function chekForMatch(){
     stopPoint = false;      
 }
 
-function resetData(){
-    hasFlippedCard = false;
-    stopPoint = false;
-    firstCard = null;
-    secondCard = null;
-}
-
 //timer
 
 const myInterval = setInterval(myTimer, 1000);
@@ -264,6 +258,17 @@ function resultAndReset(min, sec){
     again.innerHTML = `Try again!`;
     again.addEventListener('click', restartGame); 
     placeForResult.appendChild(again);
+}
+
+// to clear data
+
+function resetData(){
+    hasFlippedCard = false;
+    stopPoint = false;
+    firstCard = null;
+    secondCard = null;
+    attemptsCounter = 0;
+    disadledCards = 0;
 }
 
 
