@@ -160,9 +160,7 @@ function  flipCard(){
         hasFlippedCard = false;        
         stopPoint = true;
         setTimeout(chekForMatch, 1000);
-
-    }
-    stopPoint = false;     
+    }     
 }
 
 // avoiding the first card doubleclicking
