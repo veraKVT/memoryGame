@@ -82,11 +82,18 @@ const shirt = {
 function startGame(){
     let button = document.getElementById('start');        
     button.style.display = 'none';
+    restartGame();    
+}
+
+// restart game
+
+function restartGame(){
     let deckForGame = createNewDeck(smeshariki);
     toShuffleDeck(deckForGame);
     cardOnDesk(deckForGame);
+    let resultBox = document.getElementById('result');
+    resultBox.innerHTML = '';
 }
-
 
 //  creating deck
 
@@ -255,7 +262,7 @@ function resultAndReset(min, sec){
 
     let again = document.createElement('div');
     again.innerHTML = `Try again!`;
-    again.addEventListener('click', startGame); 
+    again.addEventListener('click', restartGame); 
     placeForResult.appendChild(again);
 }
 

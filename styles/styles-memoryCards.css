@@ -6,13 +6,14 @@
 }
 
 body{
-  background-color:	#faefae;  
+  background-color:	#faefae;
+  height: 100vh;
 }
 
 h1{
   color: #8b2138;  
   font-size: 100px;
-  margin-top: 230px;
+  padding-top: 230px;
   text-align: center;
   transition: font-size 1s; 
   transition-delay: 0;
@@ -20,7 +21,7 @@ h1{
 }
 
 h1:hover{
-  font-size: 150px;
+  font-size: 130px;
 }
 
 a{
@@ -32,7 +33,7 @@ p{
   font-size: 40px;
   text-align: center;
   line-height: 120%;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 h2{
@@ -44,14 +45,14 @@ h2{
 
 .board{
   display: flex;  
-  width: 1000px;
-  height: 100vh;
+  width: 1000px;  
   margin: auto;
   gap: 10px;
   column-gap: 10px;  
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
+  padding-top: 30px;
   
 }
 
@@ -100,14 +101,18 @@ h2{
 
 .counter div{
   height: 65px;
-  width: 250px;
+  width: 270px;
   line-height: 65px;
   color: 	#ffffff;
   background-color: #0095bd;
   border: 1px solid #0095bd;
-  border-radius: 15px;
+  border-radius: 20px;
   margin: auto;
   font-size: 30px;
   text-transform: uppercase;
+}
+
+.counter div:hover{
+  background-color: #8b2138;
 }
 
